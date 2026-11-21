@@ -4,7 +4,7 @@ Optimal solutions of benchmark instances of the 0–1 multidimensional knapsack
 problem (MKP), with a small independent checker.
 
 The repository currently covers the thirty instances with 30 constraints and
-250 variables of the OR-Library (class `cb30.250`, Chu and Beasley [1]).
+250 variables of the [OR-Library](https://people.brunel.ac.uk/~mastjjb/jeb/orlib/mknapinfo.html) (class `cb30.250`, Chu and Beasley [1]).
 Seven of them were solved to proven optimality in 2010 [2]. The other
 twenty-three had been open since 1998; they were closed in 2026 by a parallel
 resolution search [3]. Each optimal value equals the best value previously
@@ -47,8 +47,9 @@ Instance file (`.dat`), whitespace-separated integers:
     a_m1 ... a_mn
 
 The problem is: maximise `sum_j c_j x_j` subject to `sum_j a_ij x_j <= b_i` for
-`i = 1..m`, with `x_j` in `{0, 1}`. The data are those of the file `mknapcb8.txt`
-of the OR-Library; only the layout differs (one file per instance, capacities
+`i = 1..m`, with `x_j` in `{0, 1}`. The data are those of the file
+[`mknapcb8.txt`](https://people.brunel.ac.uk/~mastjjb/jeb/orlib/files/mknapcb8.txt) of the
+[OR-Library](https://people.brunel.ac.uk/~mastjjb/jeb/orlib/mknapinfo.html); only the layout differs (one file per instance, capacities
 before the weights).
 
 Solution file (`.sol`):
@@ -97,7 +98,7 @@ its weights.
 ## License
 
 The checker scripts are under the MIT license (see `LICENSE`). The instance data
-come from the OR-Library.
+come from the [OR-Library](https://people.brunel.ac.uk/~mastjjb/jeb/orlib/mknapinfo.html) of J. E. Beasley.
 
 ## References
 
