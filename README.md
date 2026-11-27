@@ -3,19 +3,37 @@
 Optimal solutions of benchmark instances of the 0–1 multidimensional knapsack
 problem (MKP), with a small independent checker.
 
-The repository currently covers the thirty instances with 30 constraints and
-250 variables of the [OR-Library](https://people.brunel.ac.uk/~mastjjb/jeb/orlib/mknapinfo.html) (class `cb30.250`, Chu and Beasley [1]).
-Seven of them were solved to proven optimality in 2010 [2]. The other
-twenty-three had been open since 1998; they were closed in 2026 by a parallel
-resolution search [3]. Each optimal value equals the best value previously
-reported in the literature: what was missing was the proof.
+The repository covers 150 instances of the [OR-Library](https://people.brunel.ac.uk/~mastjjb/jeb/orlib/mknapinfo.html)
+(Chu and Beasley [1]), in five classes of thirty instances each. A class
+`cbM.N` has `M` constraints and `N` variables.
 
-Solutions of other instance classes will be added.
+| Class | Constraints | Variables | OR-Library file | Optimality proofs |
+|---|---|---|---|---|
+| `cb5.250` | 5 | 250 | `mknapcb2.txt` | published in [4] |
+| `cb5.500` | 5 | 500 | `mknapcb3.txt` | published in [4] |
+| `cb10.250` | 10 | 250 | `mknapcb5.txt` | published in [4] |
+| `cb10.500` | 10 | 500 | `mknapcb6.txt` | published in [2] |
+| `cb30.250` | 30 | 250 | `mknapcb8.txt` | seven in [2], twenty-three in [3] |
+
+In the class `cb30.250`, seven instances were solved to proven optimality in
+2010 [2]. The other twenty-three had been open since 1998; they were closed in
+2026 by a parallel resolution search [3]. Each optimal value equals the best
+value previously reported in the literature: what was missing was the proof.
+
+For the four other classes the optimal values were already known. The
+solutions given here were computed again in 2026 with our resolution search
+solver, and each run ended with a proof of optimality. The 120 values equal those
+published in [5]; for the classes `cb10.250`, `cb5.500` and `cb10.500` they
+also equal those of [2].
+
+The file `optimal_values.csv` lists the 150 instances with their optimal
+value.
 
 ## Contents
 
-    solutions/cb30.250/   one optimal solution per instance (.sol)
-    instances/cb30.250/   the instances, one file each (.dat)
+    solutions/<class>/    one optimal solution per instance (.sol)
+    instances/<class>/    the instances, one file each (.dat)
+    optimal_values.csv    the optimal value of every instance
     check_sol.py          checks one solution against its instance
     check_all.py          checks every solution of the repository
 
@@ -28,11 +46,12 @@ Python 3, no dependency.
 
 The checker reads the instance, recomputes the objective value and the
 left-hand side of every constraint in integer arithmetic, and compares them
-with the claimed value and the capacities.
+with the claimed value and the capacities. `check_all.py` also compares each
+value with the one listed in `optimal_values.csv`.
 
 **What the checker establishes.** It shows that each solution is feasible and
 has the stated value. It does not show that the value is optimal: optimality
-rests on the exhaustive search described in [3], and a feasible solution is
+rests on the exhaustive searches described in the papers cited above, and a feasible solution is
 only a certificate of the lower bound.
 
 ## File formats
@@ -47,10 +66,10 @@ Instance file (`.dat`), whitespace-separated integers:
     a_m1 ... a_mn
 
 The problem is: maximise `sum_j c_j x_j` subject to `sum_j a_ij x_j <= b_i` for
-`i = 1..m`, with `x_j` in `{0, 1}`. The data are those of the file
-[`mknapcb8.txt`](https://people.brunel.ac.uk/~mastjjb/jeb/orlib/files/mknapcb8.txt) of the
-[OR-Library](https://people.brunel.ac.uk/~mastjjb/jeb/orlib/mknapinfo.html); only the layout differs (one file per instance, capacities
-before the weights).
+`i = 1..m`, with `x_j` in `{0, 1}`. The data are those of the files of the
+[OR-Library](https://people.brunel.ac.uk/~mastjjb/jeb/orlib/mknapinfo.html) named in the table above; only the layout differs
+(one file per instance, capacities before the weights). Instance `cbM.N_k` is
+the instance number `k` of its OR-Library file, counted from 0.
 
 Solution file (`.sol`):
 
@@ -113,6 +132,15 @@ multi-level search strategy for the 0–1 multidimensional knapsack problem.
 [3] S. Boussier, M. Vasquez, E. SanJuan and S. Gueye. Closing the 30 × 250
 OR-Library instances of the 0–1 multidimensional knapsack problem by parallel
 resolution search. In preparation, 2026.
+
+[4] Y. Vimont, S. Boussier and M. Vasquez. Reduced costs propagation in an
+efficient implicit enumeration for the 0–1 multidimensional knapsack problem.
+*Journal of Combinatorial Optimization*, 15(2):165–178, 2008.
+https://doi.org/10.1007/s10878-007-9074-4
+
+[5] R. Mansini and M. G. Speranza. CORAL: an exact algorithm for the
+multidimensional knapsack problem. *INFORMS Journal on Computing*,
+24(3):399–415, 2012. https://doi.org/10.1287/ijoc.1110.0460
 
 ## How to cite
 
