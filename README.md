@@ -3,16 +3,20 @@
 Optimal solutions of benchmark instances of the 0–1 multidimensional knapsack
 problem (MKP), with a small independent checker.
 
-The repository covers 150 instances of the [OR-Library](https://people.brunel.ac.uk/~mastjjb/jeb/orlib/mknapinfo.html)
-(Chu and Beasley [1]), in five classes of thirty instances each. A class
+The repository covers 240 instances of the [OR-Library](https://people.brunel.ac.uk/~mastjjb/jeb/orlib/mknapinfo.html)
+(Chu and Beasley [1]), in eight classes of thirty instances each: every class
+of this benchmark except `cb30.500`, whose instances are still open. A class
 `cbM.N` has `M` constraints and `N` variables.
 
 | Class | Constraints | Variables | OR-Library file | Optimality proofs |
 |---|---|---|---|---|
+| `cb5.100` | 5 | 100 | `mknapcb1.txt` | published in [1] |
 | `cb5.250` | 5 | 250 | `mknapcb2.txt` | published in [4] |
 | `cb5.500` | 5 | 500 | `mknapcb3.txt` | published in [4] |
+| `cb10.100` | 10 | 100 | `mknapcb4.txt` | published in [1] |
 | `cb10.250` | 10 | 250 | `mknapcb5.txt` | published in [4] |
 | `cb10.500` | 10 | 500 | `mknapcb6.txt` | published in [2] |
+| `cb30.100` | 30 | 100 | `mknapcb7.txt` | published in [5] |
 | `cb30.250` | 30 | 250 | `mknapcb8.txt` | seven in [2], twenty-three in [3] |
 
 In the class `cb30.250`, seven instances were solved to proven optimality in
@@ -20,13 +24,13 @@ In the class `cb30.250`, seven instances were solved to proven optimality in
 2026 by a parallel resolution search [3]. Each optimal value equals the best
 value previously reported in the literature: what was missing was the proof.
 
-For the four other classes the optimal values were already known. The
+For the seven other classes the optimal values were already known. The
 solutions given here were computed again in 2026 with our resolution search
-solver, and each run ended with a proof of optimality. The 120 values equal those
+solver, and each run ended with a proof of optimality. The 210 values equal those
 published in [5]; for the classes `cb10.250`, `cb5.500` and `cb10.500` they
 also equal those of [2].
 
-The file `optimal_values.csv` lists the 150 instances with their optimal
+The file `optimal_values.csv` lists the 240 instances with their optimal
 value.
 
 ## Contents
